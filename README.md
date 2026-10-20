@@ -49,14 +49,7 @@ Accurately predicting human motion in 3D environments requires knowing **where a
 - **Trajectory-guided generation:** Uses a predicted global trajectory as a **self-prompt** to separate global motion planning from local pose generation.
 - **Contact-aware refinement:** Learns human-body contact regions to improve motion consistency and mitigate geometric artifacts.
 
-## 🧠 Method
-
-<p align="center">
-  <img src="assets/Figure_2_Pipeline.png" alt="The three-module architecture of EgoHMP." width="100%">
-</p>
-
-
-### Inputs and outputs
+## 🧠 Inputs and outputs
 
 | Component | Description |
 |:--|:--|
@@ -65,7 +58,7 @@ Accurately predicting human motion in 3D environments requires knowing **where a
 | **3D scene** | RGB-colored 3D point cloud |
 | **Output** | Future global human trajectory and 3D body motion |
 
-The paper uses **6 observed frames** to predict **10 future frames** in its main prediction setup.
+We use **6 observed frames** to predict **10 future frames** in its main prediction setup.
 
 ## 📊 Experimental Results
 
@@ -99,6 +92,7 @@ conda activate egohmp
 # See: https://pytorch.org/get-started/locally/
 
 pip install requirements.txt
+python train.py
 ```
 
 The scene encoder additionally requires a **CUDA-compatible PointNet++ installation**. The source file references [Pointnet2_PyTorch](https://github.com/erikwijmans/Pointnet2_PyTorch); follow the selected implementation's build instructions and verify its compatibility with your CUDA/PyTorch versions.
