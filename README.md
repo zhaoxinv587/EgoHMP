@@ -6,7 +6,7 @@
 </p>
 
 <p align="center">
-  <strong>Xin Zhao</strong><sup>1</sup>,
+  Xin Zhao</strong><sup>1</sup>,
   Pengzhan Zhou</strong><sup>1,*</sup>,
   Ziyi Li<sup>1</sup>,
   Riheng Jia<sup>2</sup>,
@@ -40,8 +40,6 @@ Accurately predicting human motion in 3D environments requires knowing **where a
 2. **Difficult grounding of egocentric intent in 3D scenes.** First-person video conveys rich semantics, while head motion supplies complementary spatial and movement cues; fusing them into reliable 3D interaction predictions remains challenging.
 3. **Limited physical plausibility in predicted motions.** Joint optimization of global trajectories and local body poses can cause conflicts, while insufficient contact modeling leads to floating, sliding, and penetration artifacts.
 
-**Key insight:** Egocentric visual observations and head motion provide complementary cues for inferring **interaction intent without gaze signals**. Predicting interaction locations and contact-aware body motion can connect intent understanding to realistic motion execution.
-
 ## ✨ Highlights
 
 - **Gaze-free interaction intent:** Jointly exploits egocentric appearance and head-motion cues rather than relying on eye tracking.
@@ -53,23 +51,12 @@ Accurately predicting human motion in 3D environments requires knowing **where a
 
 | Component | Description |
 |:--|:--|
-| **Egocentric video** | Historical first-person RGB frames |
+| **Egocentric video** | Historical egocentric RGB frames |
 | **Head motion** | Historical 3D head translation and orientation |
-| **3D scene** | RGB-colored 3D point cloud |
-| **Output** | Future global human trajectory and 3D body motion |
+| **3D scene** | 3D point cloud |
+| **Output** | Future 3D human motion |
 
 We use **6 observed frames** to predict **10 future frames** in its main prediction setup.
-
-## 📊 Experimental Results
-
-| Dataset | Method | Traj-Path ↓ (mm) | MPJPE-Path ↓ (mm) | TDE@1 ↓ (mm) | Penetration ↓ (%) |
-|:--|:--|--:|--:|--:|--:|
-| **GIMO** | GAP3DS | 575 | 141.2 | 210.5 | 0.95 |
-| **GIMO** | **EgoHMP (Ours)** | **481** | **114.9** | **161.3** | **0.81** |
-| **GTA-IM** | GAP3DS | 610 | 155.0 | 235.4 | 1.12 |
-| **GTA-IM** | **EgoHMP (Ours)** | **522** | **129.6** | **182.5** | **0.91** |
-
-**Metric definitions:** Traj-Path is average global trajectory error; MPJPE-Path is average joint position error over the predicted sequence; TDE@1 is top-1 interaction target localization error; and Penetration measures the percentage of body-scene intersection.
 
 ## 🗂️ Datasets
 
@@ -99,7 +86,7 @@ The scene encoder additionally requires a **CUDA-compatible PointNet++ installat
 
 ### 2. Dataset Preparation
 
-Both training scripts use the **GIMO** directory by default (`./GIMO`). Download the dataset from its provider and prepare it according to its license and access requirements.
+Training script use the GIMO directory by default (`./GIMO`). Download the dataset from its provider and prepare it according to its license and access requirements.
 
 The paths read by the source code are summarized below (illustrative `<...>` names represent data-dependent directories and filenames):
 
