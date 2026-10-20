@@ -78,7 +78,6 @@ The paper uses **6 observed frames** to predict **10 future frames** in its main
 
 **Metric definitions:** Traj-Path is average global trajectory error; MPJPE-Path is average joint position error over the predicted sequence; TDE@1 is top-1 interaction target localization error; and Penetration measures the percentage of body-scene intersection.
 
-
 ## 🗂️ Datasets
 
 - **GIMO** 
@@ -86,6 +85,52 @@ The paper uses **6 observed frames** to predict **10 future frames** in its main
 - **Ego-Exo4D**
 
 Please consult the respective dataset providers for access requirements, licenses, and permitted uses.
+
+## ⚙️ Installation and Usage
+### 1. Environment Setup
+
+An NVIDIA GPU and a CUDA-enabled PyTorch installation are recommended. The code includes CUDA autocasting and custom PointNet++ operations. Python **3.10** is a reasonable starting point.
+
+```bash
+conda create -n egohmp python=3.10 -y
+conda activate egohmp
+
+# Install a matching PyTorch + torchvision build for your CUDA setup first.
+# See: https://pytorch.org/get-started/locally/
+
+pip install requirements.txt
+```
+
+The scene encoder additionally requires a **CUDA-compatible PointNet++ installation**. The source file references [Pointnet2_PyTorch](https://github.com/erikwijmans/Pointnet2_PyTorch); follow the selected implementation's build instructions and verify its compatibility with your CUDA/PyTorch versions.
+
+### 2. Dataset Preparation
+
+Both training scripts use the **GIMO** directory by default (`./GIMO`). Download the dataset from its provider and prepare it according to its license and access requirements.
+
+The paths read by the source code are summarized below (illustrative `<...>` names represent data-dependent directories and filenames):
+
+```text
+GIMO/
+├── dataset.csv
+├── <scene>/
+│   ├── scene_obj/
+│   │   └── transform_norm.txt
+│   └── <sequence_path>/
+│       ├── PV/                         
+│       ├── smplx_local/                
+│       └── transform_info.json        
+├── Cache_6F_FPS2/
+│   └── train/
+│       ├── fv_full.pth                 
+│       └── motion_full.pth             
+├── offline_data_full/
+│   └── <sample_id>.pt                  
+├── offline_sdf_only/
+│   └── <sample_id>.pt                  
+└── offline_affordance_gt/
+    └── <sample_id>_affordance.pt       
+```
+
 
 ## 📝 Citation
 
@@ -100,6 +145,3 @@ If you find **EgoHMP** useful in your research, please cite:
 }
 ```
 
-## 🙏 Acknowledgments
-
-This work was supported by the **National Natural Science Foundation of China** under Grants **62672066**, **62272417**, and **62672037**.
