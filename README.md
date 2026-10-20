@@ -69,10 +69,6 @@ The paper uses **6 observed frames** to predict **10 future frames** in its main
 
 ## 📊 Experimental Results
 
-We evaluate EgoHMP on **GIMO**, **GTA-IM**, and **Ego-Exo4D**, covering motion accuracy, interaction-intent localization, and physical plausibility.
-
-### GIMO and GTA-IM
-
 | Dataset | Method | Traj-Path ↓ (mm) | MPJPE-Path ↓ (mm) | TDE@1 ↓ (mm) | Penetration ↓ (%) |
 |:--|:--|--:|--:|--:|--:|
 | **GIMO** | GAP3DS | 575 | 141.2 | 210.5 | 0.95 |
