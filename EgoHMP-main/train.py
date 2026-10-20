@@ -179,9 +179,9 @@ def train():
         avg_mpjpe_path = epoch_mpjpe_path_sum / num_batches
         avg_mpjpe_end = epoch_mpjpe_end_sum / num_batches
 
-        print(f"\n✅ Epoch [{epoch}/{config.epochs}] Summary:")
-        print(f"   ➤ [Loss] Refined: {avg_ref:.4f} | Coarse: {avg_coa:.4f} | Contact KL: {avg_kl:.4f}")
-        print(f"   ➤ [Eval] MPJPE_Path: {avg_mpjpe_path:.4f} m | MPJPE_End: {avg_mpjpe_end:.4f} m\n")
+        print(f"\n  Epoch [{epoch}/{config.epochs}] Summary:")
+        print(f"   [Loss] Refined: {avg_ref:.4f} | Coarse: {avg_coa:.4f} | Contact KL: {avg_kl:.4f}")
+        print(f"   [Eval] MPJPE_Path: {avg_mpjpe_path:.4f} m | MPJPE_End: {avg_mpjpe_end:.4f} m\n")
         if epoch % 10 == 0:
             torch.save(model.state_dict(), os.path.join(config.save_dir, f"epoch_{epoch}.pth"))
 
