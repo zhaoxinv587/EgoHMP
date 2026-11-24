@@ -117,7 +117,12 @@ GIMO/
 
 If you find **EgoHMP** useful in your research, please cite:
 
-```bibtex
-
+```
+@article{zhao2026egohmp,
+  title={EgoHMP: Achieving Precise Human Motion Prediction in 3D Scenes via Egocentric Cues},
+  author={Zhao, Xin and Zhou, Pengzhan and Li, Ziyi and Jia, Riheng and Qin, Zhida and Liu, Yu},
+  journal={arXiv preprint arXiv:2611.13654},
+  year={2026}
+}
 ```
 
